@@ -14,8 +14,14 @@
     /* Make it display horizontally */
     #nav > li {
       float: left;
-      width: 10em;
+      width: 5em;
     }
+
+    /* This is the magic needed to allow the dropdowns to be wider than the
+     * menu headings. Don't ask me exactly how it works :)
+     */
+    #nav > li      { position: relative; }
+    #nav > li > ul { position: absolute; }
 
     /* Here's the hover magic. The hover rule isn't strictly necessary, but it
      * makes it work in (non-IE) browsers with Javascript disabled and CSS
@@ -24,25 +30,29 @@
     #nav > li > ul       { display: none; }
     #nav > li:hover > ul { display: block; }
 
-    /* For distinguishability. Replace these with your own styles. */
+    /* For demonstration purposes. Replace these with your own styles. */
     #nav, #nav *  { margin: 0; padding: 0; }
+    #nav li { padding: 5px; }
     #nav > li { background-color: #ddf; text-align: center; border: 1px solid #ada; }
+    #nav > li > ul { background-color: #fdf; text-align: left; margin-top: 6px; }
   </style>
 </head>
 
 <body>
   <ul id="nav">
-    <li>One
+    <li>
+      <p>One</p>
       <ul>
         <li>Sub-one</li>
         <li>Sub-two</li>
         <li>Sub-three</li>
       </ul>
     </li>
-    <li>Two
+    <li>
+      <p>Two</p>
       <ul>
         <li>Sub-one</li>
-        <li>Sub-two</li>
+        <li>Sub-two is wider than usual</li>
         <li>Sub-three</li>
       </ul>
     </li>
