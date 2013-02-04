@@ -35,6 +35,11 @@
     #nav li { padding: 5px; }
     #nav > li { background-color: #ddf; text-align: center; border: 1px solid #ada; }
     #nav > li > ul { background-color: #fdf; text-align: left; margin-top: 6px; }
+
+    /* Clearfix */
+    #nav { *zoom: 1; }
+    #nav:before, #nav:after { content: " "; display: table; }
+    #nav:after { clear: both; }
   </style>
 </head>
 
