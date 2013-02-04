@@ -44,6 +44,8 @@
 </head>
 
 <body>
+  <p id="msg">&nbsp;</p>
+
   <ul id="nav">
     <li>
       <p>One</p>
@@ -65,7 +67,16 @@
 
   <script type="text/javascript">
     $(document).ready(function () {
-      $('#nav').dropdown();
+      $('#nav').dropdown({
+        open:  function (elem) {
+          $('ul', elem).css('display', 'block');
+          $('#msg').html("<p>Opened " + $(elem).children('p').text() + "</p>");
+        },
+        close: function (elem) {
+          $('ul', elem).css('display', 'none');
+          $('#msg').html("<p>Closed " + $(elem).children('p').text() + "</p>");
+        }
+      });
     });
   </script>
 </body>

@@ -3,7 +3,9 @@
 
 $.fn.dropdown = function (options) {
   var settings = jQuery.extend({
-    timeout: 0.2
+    timeout: 0.2,
+    open: null,
+    close: null
   }, options);
   var closetimer = null;
   var ddmenuitem = null;
@@ -15,12 +17,22 @@ $.fn.dropdown = function (options) {
   {
     dropdown_canceltimer();
     dropdown_close();
-    ddmenuitem = $('ul', this).css('display', 'block');
+    ddmenuitem = this
+
+    if (settings.open) {
+      settings.open(this);
+    } else {
+      $('ul', this).css('display', 'block');
+    }
   }
 
   function dropdown_close() {
     if (ddmenuitem) {
-      ddmenuitem.css('display', 'none');
+      if (settings.close) {
+        settings.close(ddmenuitem);
+      } else {
+        $('ul', ddmenuitem).css('display', 'none');
+      }
     }
   }
 
